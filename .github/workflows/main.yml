@@ -35,6 +35,7 @@ jobs:
       - name: Fortify ScanCentral Scan
         uses: fortify/gha-setup-scancentral-client@v1.1.1
         
+      # ScanCentral Client Run Code Package with Maven
       - name: Perform SAST Scan
       - run: scancentral package -o webgoat.zip -bt mvn -bf pom.xml
 
