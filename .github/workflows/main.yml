@@ -24,13 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        
-      # Java 8 required by ScanCentral Client
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-        
+           
       # Setup ScanCentral Client
       - name: Fortify ScanCentral Scan
         uses: fortify/gha-setup-scancentral-client@v1.1.1
