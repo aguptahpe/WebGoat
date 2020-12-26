@@ -23,12 +23,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '11' 
-      - name: Check JavaHome
-        run: echo $JAVA_HOME; javac -version
+      #- uses: actions/checkout@v2
+      #- uses: actions/setup-java@v1
+      #  with:
+      #    java-version: '11' 
+      #- name: Check JavaHome
+      #  run: echo $JAVA_HOME; javac -version
            
       # Setup ScanCentral Client
       #- name: Fortify ScanCentral Scan
@@ -44,8 +44,8 @@ jobs:
           FORTIFY_LICENSE_URL: ${{ secrets.FORTIFY_LICENSE_URL }}
           FORTIFY_SCA_URL: ${{ secrets.FORTIFY_SCA_URL }}
         run: |
-          curl '$FORTIFY_LICENSE_URL' --output fortify.license
-          curl '$FORTIFY_SCA_URL' --output Fortify_SCA_and_Apps_20.1.2_linux_x64.run
+          curl "$FORTIFY_LICENSE_URL" --output fortify.license
+          curl "$FORTIFY_SCA_URL" --output Fortify_SCA_and_Apps_20.1.2_linux_x64.run
           chmod a+x  Fortify_SCA_and_Apps_20.1.2_linux_x64.run
           ./Fortify_SCA_and_Apps_20.1.2_linux_x64.run --mode unattended --unattendedmodeui minimal --installdir ./sca
           export PATH=$PATH:./sca/bin
