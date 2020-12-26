@@ -49,3 +49,8 @@ jobs:
           fortifyupdate
           scancentral package -o webgoat.zip -bt mvn -bf pom.xml
           packagescanner -package webgoat.zip -fpr webgoat.fpr
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: scan file
+          path: webgoat.fpr
