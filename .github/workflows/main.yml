@@ -26,10 +26,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: aguptahpe/gha-fpr-to-sarif@v1
-        with: 
-          input: webgoat.fpr
-          outputDir: .
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm install
+      - run: npm test
+      - run: npm i @microsoft/sarif-multitool-linux
+        
       - uses: actions/setup-java@v1
         with:
           java-version: '11' 
