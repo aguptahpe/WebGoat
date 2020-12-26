@@ -7,8 +7,8 @@ on:
   release:
      types: [ created ]
   # Triggers the workflow on push or pull request events but only for the develop branch
-  #push:
-  #  branches: [ develop ]
+  push:
+    branches: [ serif_Upload ]
   #pull_request:
   #  branches: [ develop ]
 
@@ -52,7 +52,20 @@ jobs:
           scancentral package -o webgoat.zip -bt mvn -bf pom.xml
           packagescanner -package webgoat.zip -fpr webgoat.fpr
           
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm i @microsoft/sarif-multitool
+      - run: npx @microsoft/sarif-multitool convert webgoat.fpr -t FortifyFpr -o webgoat.sarif -f -p   
       - uses: actions/upload-artifact@v2
         with:
-          name: scan file
-          path: webgoat.fpr
+          name: scanResults
+          path: |
+            webgoat.fpr
+            webgoat.sarif  
+      - name: Import Results
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: webgoat.sarif
+
+          
