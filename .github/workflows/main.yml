@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: '12'
       - run: npm i @microsoft/sarif-multitool
-      - run: npx @microsoft/sarif-multitool convert fprFile -t webgoat.fpr -o webgoat.serif -f -p   
+      - run: npx @microsoft/sarif-multitool convert webgoat.fpr -t FortifyFpr -o webgoat.serif -f -p   
       - uses: actions/upload-artifact@v2
         with:
           name: converted file
