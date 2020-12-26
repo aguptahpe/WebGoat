@@ -33,8 +33,10 @@ jobs:
       - run: npx @microsoft/sarif-multitool convert webgoat.fpr -t FortifyFpr -o webgoat.sarif -f -p   
       - uses: actions/upload-artifact@v2
         with:
-          name: converted file
-          path: webgoat.sarif  
+          name: scanResults
+          path: |
+            webgoat.fpr
+            webgoat.sarif  
       - name: Import Results
         uses: github/codeql-action/upload-sarif@v1
         with:
