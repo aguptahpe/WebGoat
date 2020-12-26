@@ -56,3 +56,9 @@ jobs:
         with:
           name: scan file
           path: webgoat.fpr
+          
+      - uses: fortify/gha-fpr-to-sarif
+        with: 
+          input: webgoat.fpr
+          outputDir: .
+          
