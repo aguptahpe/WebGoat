@@ -4,8 +4,17 @@
 name: SL Scan
 
 # This section configures the trigger for the workflow. Feel free to customize depending on your convention
-on: push
-
+on:
+                release:
+                       types: [ created ]
+                         # Triggers the workflow on push or pull request events but only for the develop branch
+                         #   #push:
+                         #     #  branches: [ develop ]
+                         #       #pull_request:
+                         #         #  branches: [ develop ]
+                         #
+                         #           # Allows you to run this workflow manually from the Actions tab
+                         #             workflow_dispatch:
 jobs:
   Scan-Build:
     # Scan runs on ubuntu, mac and windows
