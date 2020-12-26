@@ -64,6 +64,6 @@ jobs:
     - name: Check JavaHome
       run: echo $JAVA_HOME; javac -version
     - run: |
-       mvn clean install
+       mvn clean install -DskipTests
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
