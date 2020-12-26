@@ -7,8 +7,8 @@ on:
   release:
      types: [ created ]
   # Triggers the workflow on push or pull request events but only for the develop branch
-  #push:
-  #  branches: [ develop ]
+  push:
+    branches: [ serif_Upload ]
   #pull_request:
   #  branches: [ develop ]
 
