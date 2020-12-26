@@ -4,6 +4,8 @@ name: CI
 
 # Controls when the action will run. 
 on:
+        release:
+                - created
   # Triggers the workflow on push or pull request events but only for the develop branch
   #push:
   #  branches: [ develop ]
