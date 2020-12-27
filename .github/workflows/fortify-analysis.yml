@@ -56,7 +56,7 @@ jobs:
         with:
           node-version: '12'
       - run: npm i @microsoft/sarif-multitool
-      - run: npx @microsoft/sarif-multitool convert webgoat.fpr -t FortifyFpr -o webgoat.sarif -f -p   
+      - run: npx @microsoft/sarif-multitool convert webgoat.fpr -t FortifyFpr -o webgoat.sarif -f -p --normalize-for-github-dsp  
       - uses: actions/upload-artifact@v2
         with:
           name: scanResults
